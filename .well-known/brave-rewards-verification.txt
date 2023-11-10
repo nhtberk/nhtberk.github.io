@@ -1,0 +1,4 @@
+This is a Brave Creators publisher verification file.
+
+Domain: nhtberk.github.io
+Token: 08c22d6d2c8b74ec98ee53f71fd1de7de3dbab50c6eb381c5325ae6a895dcd3a
