@@ -20,7 +20,7 @@ const projects: Project[] = [
     {
         title: 'Modern Blog Platform',
         description: 'Angular ve Node.js ile geliştirilmiş full-stack blog platformu. CRUD operasyonları, rol tabanlı yetkilendirme sistemi ve markdown editör desteği içerir.',
-        image: './../../../public/blog-platform.png',
+        image: '/blog-platform.png',
         tags: ['Angular', 'Node.js', 'MongoDB', 'Tailwind CSS'],
         githubUrl: 'https://github.com/nhtberk/untitledBlog',
         liveUrl: 'https://untitled-blog-rho.vercel.app/',
@@ -29,7 +29,7 @@ const projects: Project[] = [
     {
         title: 'Event Management App',
         description: 'Full-stack etkinlik yönetim uygulaması. Backend için Node.js/Express, frontend için Flutter kullanıldı. JWT tabanlı kimlik doğrulama ve etkinlik görüntüleme sistemi.',
-        image: './../../../public/event-app.png',
+        image: '/event-app.png',
         tags: ['Flutter', 'Node.js', 'Express', 'MongoDB'],
         githubUrl: 'https://github.com/nhtberk/event_mobile',
         category: 'mobile'
