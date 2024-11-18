@@ -1,4 +1,4 @@
-import { FiMail, FiPhone, FiMapPin, FiLinkedin, FiDownload } from 'react-icons/fi'
+import { FiMail, FiPhone, FiMapPin, FiLinkedin } from 'react-icons/fi'
 import PDFDownloadButton from '../components/PDFDownloadButton'
 
 export default function CV() {

@@ -12,7 +12,7 @@ export default function Contact() {
   })
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,7 +35,7 @@ export default function Contact() {
 
       setSuccess(true)
       setFormData({ name: '', email: '', subject: '', message: '' })
-    } catch (err) {
+    } catch (_err) {
       setError('Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.')
     } finally {
       setLoading(false)
