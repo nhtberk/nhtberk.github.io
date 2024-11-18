@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/repo-isminiz', // GitHub repo adınızı buraya yazın
+  basePath: '/nhtberk.github.io', // GitHub repo adınızı buraya yazın
 }
 
 module.exports = nextConfig 
