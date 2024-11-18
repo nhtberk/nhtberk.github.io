@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
   images:{
     unoptimized:true
   },
-  basePath:"/nhtberk.github.io",
+  basePath:"",
+  assetPrefix:"",
   reactStrictMode: true,
   eslint:{
     ignoreDuringBuilds:true

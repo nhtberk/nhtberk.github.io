@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import Header from './components/Header/Header'
 import { ThemeProvider } from './components/ThemeProvider'
 import LoadingSpinner from './components/LoadingSpinner'
-import "./globals.css"
+import "/globals.css"
 
 export default function RootLayout({
   children,
