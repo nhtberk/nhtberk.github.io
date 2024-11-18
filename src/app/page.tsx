@@ -10,7 +10,7 @@ import {
 } from 'react-icons/si'
 import { SiAngular, SiFlutter } from 'react-icons/si'
 import Image from 'next/image'
-import '../public/styles.css'
+import '../../public/styles.css'
 
 const technologies = [
   {
