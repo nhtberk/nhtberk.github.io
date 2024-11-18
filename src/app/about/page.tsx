@@ -15,8 +15,6 @@ export default function About() {
             odaklı bir yaklaşım benimsedim.
           </p>
         </section>
-
-        {/* Profesyonel Yolculuk */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">Profesyonel Yolculuk</h2>
           <p className="text-lg text-foreground/80 leading-relaxed mb-4">
@@ -32,7 +30,6 @@ export default function About() {
           </p>
         </section>
 
-        {/* Teknik Yaklaşım */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">Teknik Yaklaşımım</h2>
           <p className="text-lg text-foreground/80 leading-relaxed">
@@ -43,7 +40,6 @@ export default function About() {
           </p>
         </section>
 
-        {/* İletişim */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">İletişim</h2>
           <p className="text-lg text-foreground/80 leading-relaxed mb-6">
