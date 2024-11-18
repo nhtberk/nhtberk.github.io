@@ -68,7 +68,7 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-6">
             <div className="relative w-40 h-40 mb-4">
               <Image
-                src="/profile.jpg"
+                src="./../../../public/profile.jpg"
                 alt="Nihat Berk ÖZ"
                 fill
                 priority

@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // <=== enables static exports
+  output: "export",
+  images:{
+    unoptimized:true
+  },
+  basePath:"/",
   reactStrictMode: true,
   eslint:{
     ignoreDuringBuilds:true
