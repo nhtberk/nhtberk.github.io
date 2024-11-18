@@ -10,6 +10,8 @@ import {
 } from 'react-icons/si'
 import { SiAngular, SiFlutter } from 'react-icons/si'
 import Image from 'next/image'
+import '../public/styles.css'
+
 const technologies = [
   {
     category: "Frontend",
@@ -61,7 +63,6 @@ const technologies = [
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
       <section className="relative flex flex-col items-center justify-center min-h-[90vh] bg-gradient-to-b from-background to-primary/5 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-5" />
         <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
@@ -116,8 +117,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Technologies Section */}
       <section className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
