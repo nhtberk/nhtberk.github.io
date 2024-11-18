@@ -5,7 +5,6 @@ export default function About() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-24">
       <div className="space-y-12">
-        {/* Giriş */}
         <section>
           <h1 className="text-4xl font-bold mb-6">Hakkımda</h1>
           <p className="text-lg text-foreground/80 leading-relaxed">
