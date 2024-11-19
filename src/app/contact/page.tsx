@@ -28,7 +28,7 @@ export default function Contact() {
             from: 'Portfolio Contact <onboarding@resend.dev>', // Resend'de doğrulanmış domain
             to: 'berkoz5555@gmail.com', // Sizin mail adresiniz
             replyTo: formData.email,
-            subject: `Portfolio İletişim: ${subject}`,
+            subject: `Portfolio İletişim: ${formData.subject}`,
             html: `
                 <div>
                     <h2>Yeni İletişim Formu Mesajı</h2>
