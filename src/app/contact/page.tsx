@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
-
+import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
