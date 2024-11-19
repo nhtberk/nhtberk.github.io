@@ -2,9 +2,7 @@
 
 import { useState } from 'react'
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
-import { Resend } from 'resend'
 
-const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY)
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -15,33 +13,18 @@ export default function Contact() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
   const handleSubmit = async (e: React.FormEvent) => {
-    'use server'
     e.preventDefault()
     setLoading(true)
     setError('')
     setSuccess(false)
 
     try {
+      const response =SendEmail(JSON.stringify(formData)),
+      })
 
-       const response = await resend.emails.send({
-            from: 'Portfolio Contact <onboarding@resend.dev>', // Resend'de doğrulanmış domain
-            to: 'berkoz5555@gmail.com', // Sizin mail adresiniz
-            replyTo: formData.email,
-            subject: `Portfolio İletişim: ${formData.subject}`,
-            html: `
-                <div>
-                    <h2>Yeni İletişim Formu Mesajı</h2>
-                    <p><strong>İsim:</strong> ${formData.name}</p>
-                    <p><strong>Email:</strong> ${formData.email}</p>
-                    <p><strong>Konu:</strong> ${formData.subject}</p>
-                    <p><strong>Mesaj:</strong></p>
-                    <p>${formData.message}</p>
-                </div>
-            `
-        })
-      
-      if (!response) {
+      if (!response.ok) {
         throw new Error('Bir hata oluştu')
       }
 
@@ -51,9 +34,8 @@ export default function Contact() {
       setError('Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.')
     } finally {
       setLoading(false)
-    }
-  }
-
+    }
+  }
   return (
     <div className="max-w-5xl mx-auto px-4 py-24">
       <div className="grid md:grid-cols-2 gap-12">
