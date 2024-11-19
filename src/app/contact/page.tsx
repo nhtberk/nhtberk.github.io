@@ -22,7 +22,7 @@ export default function Contact() {
     setSuccess(false)
 
     try {
-      const response =SendEmail(JSON.stringify(formData)),
+      const response =SendEmail(JSON.stringify(formData))
 
       if (!response) {
         throw new Error('Bir hata oluştu')
