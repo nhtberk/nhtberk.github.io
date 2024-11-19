@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { FiGithub, FiLinkedin, FiMail, FiCode, FiDatabase, FiTool, FiSmartphone, } from 'react-icons/fi'
 import {
