@@ -1,6 +1,6 @@
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY)
-export SendEmail = async{body}=>{
+export SendEmail() = async{body}=>{
     const response = await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>', // Resend'de doğrulanmış domain
             to: 'berkoz5555@gmail.com', // Sizin mail adresiniz
