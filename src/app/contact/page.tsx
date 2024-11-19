@@ -41,7 +41,7 @@ export default function Contact() {
             `
         })
       
-      if (!response.ok) {
+      if (!response) {
         throw new Error('Bir hata oluştu')
       }
 
