@@ -27,7 +27,7 @@ export default function Contact() {
        const response = await resend.emails.send({
             from: 'Portfolio Contact <onboarding@resend.dev>', // Resend'de doğrulanmış domain
             to: 'berkoz5555@gmail.com', // Sizin mail adresiniz
-            replyTo: ${formData.email},
+            replyTo: formData.email,
             subject: `Portfolio İletişim: ${subject}`,
             html: `
                 <div>
