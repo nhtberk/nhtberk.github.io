@@ -23,7 +23,7 @@ export default function Contact() {
     setSuccess(false)
 
     try {
-      const response = await fetch('https://formspree.io/f/mzzbvrwe', {
+      const response = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMID}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

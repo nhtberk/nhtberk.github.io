@@ -30,7 +30,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      FORMID: ${{ secrets.FORMID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -76,7 +76,7 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Create .env file
-        run: echo NEXT_PUBLIC_RESEND_API_KEY=${{ secrets.RESEND_API_KEY }} >> .env.local
+        run: echo NEXT_PUBLIC_FORMID=${{ secrets.FORMID }} >> .env.local
       - name: Build with Next.js
         run:  ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Build CSS
