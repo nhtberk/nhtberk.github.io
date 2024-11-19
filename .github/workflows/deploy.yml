@@ -75,8 +75,8 @@ jobs:
 
       - name: Build with Next.js
         run: |
-          touch .env.local,
-          echo RESEND_API_KEY =${{ secrets.RESEND_API_KEY }} >> .env.local,
+          touch .env.local
+          echo RESEND_API_KEY =${{ secrets.RESEND_API_KEY }} >> .env.local
           next build
       - name: Build CSS
         run: npm run build:css
