@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
+import {SendEmail} from './../api/contact/route'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
