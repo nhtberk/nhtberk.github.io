@@ -2,12 +2,26 @@
 
 import Link from 'next/link'
 import { useTheme } from '../ThemeProvider'
-import { FiSun, FiMoon } from 'react-icons/fi'
+import { FiSun, FiMoon, FiX, FiMenu } from 'react-icons/fi'
 import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme()
   const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const navItems = [
     { href: '/about', label: 'Hakkımda' },
@@ -18,6 +32,10 @@ const Header = () => {
 
   const isActive = (path: string) => {
     return pathname === path
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
   }
 
   return (
@@ -31,7 +49,8 @@ const Header = () => {
         </Link>
         
         <div className="flex items-center gap-6">
-          <ul className="flex gap-6">
+          {/* Masaüstü Menü */}
+          <ul className="hidden md:flex gap-6">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link 
@@ -47,6 +66,14 @@ const Header = () => {
               </li>
             ))}
           </ul>
+
+          {/* Mobil Menü Butonu */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-full hover:bg-primary/10 transition-colors"
+          >
+            {isMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
+          </button>
           
           <button
             onClick={toggleTheme}
@@ -54,6 +81,29 @@ const Header = () => {
           >
             {theme === 'light' ? <FiMoon className="w-5 h-5" /> : <FiSun className="w-5 h-5" />}
           </button>
+
+          {/* Mobil Menü */}
+          {isMenuOpen && (
+            <div className="absolute top-16 left-0 w-full bg-background border-b md:hidden">
+              <ul className="flex flex-col p-4">
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={closeMenu}
+                      className={`block py-2 transition-colors ${
+                        isActive(item.href)
+                          ? 'text-primary font-medium'
+                          : 'hover:text-primary'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </nav>
     </header>
