@@ -95,7 +95,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     env:
-      RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      FORMID: ${{ secrets.FORMID }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
