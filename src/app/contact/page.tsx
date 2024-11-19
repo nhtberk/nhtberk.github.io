@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
-import {SendEmail} from './../api/contact/route'
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -15,27 +15,36 @@ export default function Contact() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    setError('')
+    setError(null)
     setSuccess(false)
 
     try {
-      const response =SendEmail(JSON.stringify(formData))
+      const response = await fetch('https://formspree.io/f/mzzbvrwe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-      if (!response) {
-        throw new Error('Bir hata oluştu')
+      if (!response.ok) {
+        throw new Error('Form gönderimi başarısız oldu')
       }
 
       setSuccess(true)
       setFormData({ name: '', email: '', subject: '', message: '' })
-    } catch (_err) {
+    } catch (error) {
       setError('Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.')
     } finally {
       setLoading(false)
-    }
-  }
+    }
+  }
+
+
   return (
     <div className="max-w-5xl mx-auto px-4 py-24">
       <div className="grid md:grid-cols-2 gap-12">
@@ -168,7 +177,29 @@ export default function Contact() {
               'Mesajınızı Gönder'
             )}
           </button>
+          {success && (
+            <div className="animate-fade-in p-4 rounded-md bg-green-500/10 border border-green-500/20">
+              <p className="text-green-500 flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Mesajınız başarıyla gönderildi! En kısa sürede size dönüş yapacağız.
+              </p>
+            </div>
+          )}
+
+          {error && (
+            <div className="animate-fade-in p-4 rounded-md bg-red-500/10 border border-red-500/20">
+              <p className="text-red-500 flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                {error}
+              </p>
+            </div>
+          )}
         </form>
+        
       </div>
     </div>
   )
