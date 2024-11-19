@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
 import { Resend } from 'resend'
 
-console.log(process.env.RESEND_API_KEY)
-const resend = new Resend(process.env.RESEND_API_KEY)
+console.log(process.env.NEXT_PUBLIC_RESEND_API_KEY)
+const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY)
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
