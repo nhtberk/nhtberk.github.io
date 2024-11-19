@@ -10,6 +10,7 @@ import {
 } from 'react-icons/si'
 import { SiAngular, SiFlutter } from 'react-icons/si'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 const technologies = [
   {
@@ -58,8 +59,47 @@ const technologies = [
     ]
   }
 ]
+const titles = ["Web Developer", "Mobile Developer", "Full Stack Developer"]
 
 export default function Home() {
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
+  const [currentTitle, setCurrentTitle] = useState("")
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const typeSpeed = isDeleting ? 50 : 100
+    const deleteSpeed = 50
+    const pauseTime = 2000 // Yazı tamamlandığında bekleme süresi
+
+    const title = titles[currentTitleIndex]
+    
+    if (!isDeleting && currentTitle === title) {
+      // Yazı tamamlandı, silme işlemi için bekle
+      const timeout = setTimeout(() => {
+        setIsDeleting(true)
+      }, pauseTime)
+      return () => clearTimeout(timeout)
+    }
+
+    if (isDeleting && currentTitle === "") {
+      // Silme işlemi tamamlandı, sonraki title'a geç
+      setIsDeleting(false)
+      setCurrentTitleIndex((prev) => (prev + 1) % titles.length)
+      return
+    }
+
+    const timeout = setTimeout(() => {
+      setCurrentTitle(prev => {
+        if (isDeleting) {
+          return prev.slice(0, -1)
+        }
+        return title.slice(0, prev.length + 1)
+      })
+    }, isDeleting ? deleteSpeed : typeSpeed)
+
+    return () => clearTimeout(timeout)
+  }, [currentTitle, currentTitleIndex, isDeleting])
+
   return (
     <div className="flex flex-col min-h-screen">
       <section className="relative flex flex-col items-center justify-center min-h-[90vh] bg-gradient-to-b from-background to-primary/5 px-4 overflow-hidden">
@@ -79,6 +119,7 @@ export default function Home() {
               <h1 className="text-6xl font-bold tracking-tight">
                 <span className="text-primary">Merhaba</span>, Ben Nihat Berk ÖZ
               </h1>
+              <p className="text-2xl text-primary h-8">{currentTitle}</p>
               <p className="text-xl text-foreground/80 max-w-2xl mx-auto">
                 Mobil ve web teknolojileri konusunda uzmanlaşmış bir Full Stack geliştirici.
                 React Native ile cross-platform mobil uygulamalar geliştiriyor,
