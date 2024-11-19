@@ -21,7 +21,7 @@ export default function Contact() {
     setSuccess(false)
 
     try {
-      const response = await fetch('nhtberk.github.io/api', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
