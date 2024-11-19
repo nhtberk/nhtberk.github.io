@@ -1,4 +1,4 @@
-'use client'
+'use server'
 
 import { useState } from 'react'
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
