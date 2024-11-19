@@ -3,6 +3,9 @@
 import { useState } from 'react'
 import { FiMail, FiMapPin, FiSend } from 'react-icons/fi'
 
+
+const resend = new Resend(process.env.RESEND_API_KEY)
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -13,7 +16,6 @@ export default function Contact() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
@@ -21,14 +23,24 @@ export default function Contact() {
     setSuccess(false)
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
 
+       const response = await resend.emails.send({
+            from: 'Portfolio Contact <onboarding@resend.dev>', // Resend'de doğrulanmış domain
+            to: 'berkoz5555@gmail.com', // Sizin mail adresiniz
+            replyTo: email,
+            subject: `Portfolio İletişim: ${subject}`,
+            html: `
+                <div>
+                    <h2>Yeni İletişim Formu Mesajı</h2>
+                    <p><strong>İsim:</strong> ${formData.name}</p>
+                    <p><strong>Email:</strong> ${formData.email}</p>
+                    <p><strong>Konu:</strong> ${formData.subject}</p>
+                    <p><strong>Mesaj:</strong></p>
+                    <p>${formData.message}</p>
+                </div>
+            `
+        })
+      
       if (!response.ok) {
         throw new Error('Bir hata oluştu')
       }
