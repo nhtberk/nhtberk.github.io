@@ -16,6 +16,7 @@ export default function Contact() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const handleSubmit = async (e: React.FormEvent) => {
+    'use server'
     e.preventDefault()
     setLoading(true)
     setError('')
